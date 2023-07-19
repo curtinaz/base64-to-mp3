@@ -1,33 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-
+<!DOCTYPE html charset>
+<html>
 <head>
   <meta charset="UTF-8">
-  <title>CodePen - Use a base64 encoded audio on CodePen</title>
-  <link rel="stylesheet" href="./style.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
-
+  <title>Gerador de Arquivo MP3</title>
+  <link rel="stylesheet" href="estilos.css">
 </head>
-
 <body>
-
-  <textarea id="source" cols="30" rows="10"></textarea> <button id="download">download</button>
-  <audio id='audio' src="" style="display: none;" controls='true'></audio>
-  <a href="" download id="saveAs" style="display: none;"></a>
-
+  <div class="container">
+    <h1>Gerador de Arquivo MP3</h1>
+    <form id="mp3Form" method="post" action="gerar_mp3.php">
+      <label for="nome_arquivo">Nome do arquivo:</label>
+      <input type="text" id="nome_arquivo" name="nome_arquivo" required>
+      <br>
+      <label for="base64_audio">Base64 do áudio:</label>
+      <textarea id="base64_audio" name="base64_audio" rows="5" required></textarea>
+      <br>
+      <button type="submit">Gerar Arquivo MP3</button>
+    </form>
+    <div id="resultado"></div>
+  </div>
 </body>
-
-<script>
-  document.querySelector("#download").addEventListener('click', () => {
-    var cc = document.getElementById('source');
-    var audio = document.getElementById('audio')
-    var download = document.querySelector("#saveAs")
-
-    var realSource = "data:audio/wav;base64," + cc.value;
-
-    audio.src = realSource;
-    audio.style.display = 'block'
-  });
-</script>
-
 </html>
