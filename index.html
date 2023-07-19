@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - Use a base64 encoded audio on CodePen</title>
+  <link rel="stylesheet" href="./style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+
+</head>
+
+<body>
+
+  <textarea id="source" cols="30" rows="10"></textarea> <button id="download">download</button>
+  <audio id='audio' src="" style="display: none;" controls='true'></audio>
+  <a href="" download id="saveAs" style="display: none;"></a>
+
+</body>
+
+<script>
+  document.querySelector("#download").addEventListener('click', () => {
+    var cc = document.getElementById('source');
+    var audio = document.getElementById('audio')
+    var download = document.querySelector("#saveAs")
+
+    var realSource = "data:audio/wav;base64," + cc.value;
+
+    audio.src = realSource;
+    audio.style.display = 'block'
+  });
+</script>
+
+</html>
